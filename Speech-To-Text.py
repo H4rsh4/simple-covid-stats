@@ -8,8 +8,8 @@ from ibm_watson.websocket import RecognizeCallback, AudioSource
 
 #Authentication
 
-API_KEY = 'EPM1Ad4CA9YelN8XMydhOKjHxnEHT9dwiopPQRmq7CfR'
-API_URL = 'https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/ff3c89c8-3149-43c8-b491-71af9401fe9b'
+API_KEY = ''
+API_URL = ''
 
 authenticator = IAMAuthenticator(API_KEY)
 speech_to_text = SpeechToTextV1(

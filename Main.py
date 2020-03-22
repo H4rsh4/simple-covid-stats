@@ -26,8 +26,8 @@ mic-input -> stt -> process -> tts response -> play the audio (if saved, rm)
 
 def TTS_IBM_WATSON(Line):
     #AUTHENTICATION FOR IBM
-    API_KEY = 'OgqZLEBuJbeP4tQnrNNYUMjmJcb6lBTQLOwrycTHMq_1'
-    API_URL = 'https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/832cd92b-0ae6-45e1-bfac-796a66b0b465'
+    API_KEY = '' #Can be found on the IBM service manage page
+    API_URL = ''
 
     authenticator = IAMAuthenticator(API_KEY)
     text_to_speech = TextToSpeechV1(
