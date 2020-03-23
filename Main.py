@@ -1,18 +1,16 @@
-#WEB
 import requests
 from bs4 import BeautifulSoup
 
-#base
 import json
 from os.path import join, dirname
 
-#IBM-TOOLS
+#IBM-Watson
 from ibm_watson import TextToSpeechV1
 from ibm_watson import SpeechToTextV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.websocket import RecognizeCallback, AudioSource
 
-#Audio
+#Audio-Tools
 from playsound import playsound
 import time
 
@@ -20,23 +18,36 @@ import time
 
 '''
 Program-flow:
-mic-input -> stt -> process -> tts response -> play the audio (if saved, rm)
+mic-input[F] -> stt[F](command) -> process -> tts response -> play the audio (if saved, rm)
 '''
+
+#---------------------AUTHENTICATION FOR IBM-----------------------
+#TTS
+API_KEY = '' #Can be found on the IBM service manage page
+API_URL = ''
+
+authenticator = IAMAuthenticator(API_KEY)
+text_to_speech = TextToSpeechV1(
+    authenticator=authenticator
+)
+text_to_speech.set_service_url(API_URL)
+
+#STT - Future
+''' 
+API_KEY = ''
+API_URL = ''
+
+authenticator = IAMAuthenticator(API_KEY)
+speech_to_text = SpeechToTextV1(
+    authenticator=authenticator
+)
+
+speech_to_text.set_service_url(API_URL)
+'''
+#------------------------------------------------------------------
 
 
 def TTS_IBM_WATSON(Line):
-    #AUTHENTICATION FOR IBM
-    API_KEY = '' #Can be found on the IBM service manage page
-    API_URL = ''
-
-    authenticator = IAMAuthenticator(API_KEY)
-    text_to_speech = TextToSpeechV1(
-        authenticator=authenticator
-    )
-    text_to_speech.set_service_url(API_URL)
-    
-    #--------------------------------------------------------------------------------
-    
     with open('res.wav', 'wb') as audio_file:
         audio_file.write(
             text_to_speech.synthesize(
